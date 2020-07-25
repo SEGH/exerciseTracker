@@ -30,6 +30,18 @@ app.get("/exercise", (req, res) => {
     res.sendFile(__dirname + "/public/exercise.html");
 });
 
+// API routes
+
+app.post("/api/workouts", (req, res) => {
+    db.Workout.create(req.body)
+        .then(workout => {
+            res.json(workout);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+
 // Run server
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
