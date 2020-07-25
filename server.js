@@ -2,7 +2,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-// const db = require("./models");
+const db = require("./models");
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect database
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
 // html routes
 app.get("/stats", (req, res) => {
