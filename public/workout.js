@@ -3,7 +3,7 @@ async function initWorkout() {
   // Using methods to query database from api.js
   const lastWorkout = await API.getLastWorkout();
   console.log("Last workout:", lastWorkout);
-  // If there are workouts in the database, change the a href to insert the id of the last workout and set data to workoutSummary object to render in summary box
+  // If there are workouts in the database, change the Continue Workout buttonn's a href to insert the id of the last workout and use API.getLastWorkout() to set data in workoutSummary object to render in summary box
   if (lastWorkout) {
     document
       .querySelector("a[href='/exercise?']")
