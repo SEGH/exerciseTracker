@@ -42,6 +42,16 @@ app.post("/api/workouts", (req, res) => {
         });
 });
 
+app.put("/api/workouts/:id", (req, res) => {
+    db.Exercise.create(req.body).then(exercise => {
+        db.Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: exercise.id }}, { new: true }).then(workouts => {
+            console.log(exercise);
+            console.log(workouts);
+            res.json(workouts);
+        });
+    });
+});
+
 // Run server
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
