@@ -34,6 +34,7 @@ API.getWorkoutsInRange()
   return arr;
   }
 function populateChart(data) {
+  let workoutDurations = totalDuration(data);
   let durations = duration(data);
   let pounds = calculateTotalWeight(data);
   let workouts = workoutNames(data);
@@ -61,7 +62,7 @@ function populateChart(data) {
           label: "Workout Duration In Minutes",
           backgroundColor: "red",
           borderColor: "red",
-          data: durations,
+          data: workoutDurations,
           fill: false
         }
       ]
@@ -184,6 +185,16 @@ function populateChart(data) {
       }
     }
   });
+}
+
+function totalDuration(data) {
+  let durations = [];
+
+  data.forEach(workout => {
+    durations.push(workout.totalDuration);
+  });
+
+  return durations;
 }
 
 function duration(data) {
