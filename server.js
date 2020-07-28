@@ -61,6 +61,20 @@ app.put("/api/workouts/:id", (req, res) => {
     });
 });
 
+// Last seven records
+app.get("/api/workouts/range", (req, res) => {
+    db.Workout.find({})
+    .sort({day: -1})
+    .limit(7)
+    .populate("exercises")
+    .then(workouts => {
+        res.json(workouts);
+    })
+    .catch(err => {
+        res.json(err);
+    });
+});
+
 // Run server
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
