@@ -68,7 +68,12 @@ app.get("/api/workouts/range", (req, res) => {
     .limit(7)
     .populate("exercises")
     .then(workouts => {
-        res.json(workouts);
+        let newArray = [];
+
+        for (let i = workouts.length - 1 ; i >= 0; i--) {
+            newArray.push(workouts[i]);
+        }
+        res.json(newArray);
     })
     .catch(err => {
         res.json(err);
