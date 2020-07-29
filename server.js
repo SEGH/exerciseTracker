@@ -33,6 +33,7 @@ app.get("/exercise", (req, res) => {
 // API routes
 app.get("/api/workouts", (req, res) => {
     db.Workout.find({})
+        .populate("exercises")
         .then(workouts => {
             res.json(workouts);
         })
