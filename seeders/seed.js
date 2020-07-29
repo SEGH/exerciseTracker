@@ -79,8 +79,8 @@ let exerciseSeed = [
     sets: 4
   },
   {
-    type: "resistance",
-    name: "Bench",
+    type: "cardio",
+    name: "Bike Ride",
     duration: 30,
     distance: 2
   }
@@ -95,52 +95,52 @@ db.Exercise.deleteMany({})
   let workoutSeed = [
     {
       day: new Date().setDate(new Date().getDate()-10),
-      exercises: mongoose.Types.ObjectId(data.ops[0]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[0]._id)],
       totalDuration: data.ops[0].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-9),
-      exercises: mongoose.Types.ObjectId(data.ops[1]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[1]._id)],
       totalDuration: data.ops[1].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-8),
-      exercises: mongoose.Types.ObjectId(data.ops[2]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[2]._id)],
       totalDuration: data.ops[2].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-7),
-      exercises: mongoose.Types.ObjectId(data.ops[3]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[3]._id)],
       totalDuration: data.ops[3].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-6),
-      exercises: mongoose.Types.ObjectId(data.ops[4]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[4]._id)],
       totalDuration: data.ops[4].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-5),
-      exercises: mongoose.Types.ObjectId(data.ops[5]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[5]._id)],
       totalDuration: data.ops[5].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-4),
-      exercises: mongoose.Types.ObjectId(data.ops[6]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[6]._id)],
       totalDuration: data.ops[6].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-3),
-      exercises: mongoose.Types.ObjectId(data.ops[7]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[7]._id)],
       totalDuration: data.ops[7].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-2),
-      exercises: mongoose.Types.ObjectId(data.ops[8]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[8]._id)],
       totalDuration: data.ops[8].duration
     },
     {
       day: new Date().setDate(new Date().getDate()-1),
-      exercises: mongoose.Types.ObjectId(data.ops[9]._id),
+      exercises: [mongoose.Types.ObjectId(data.ops[9]._id)],
       totalDuration: data.ops[9].duration
     }
   ];
