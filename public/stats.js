@@ -36,6 +36,7 @@ API.getWorkoutsInRange()
 function populateChart(data) {
   let workoutDurations = totalDuration(data);
   let durations = duration(data);
+  let allPounds = workoutTotalWeight(data);
   let pounds = calculateTotalWeight(data);
   let labels = setLabels(data);
   let workouts = workoutNames(data);
@@ -93,7 +94,7 @@ function populateChart(data) {
       datasets: [
         {
           label: "Pounds",
-          data: pounds,
+          data: allPounds,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -189,7 +190,7 @@ function setLabels(data) {
     let dayNum = new Date(data[i].day).getDay();
     let month = new Date(data[i].day).getMonth() + 1;
     let date = new Date(data[i].day).getDate();
-    console.log(dayNum);
+    // console.log(dayNum);
     labels.push(`${days[dayNum]} ${month}/${date}`);
   }
 
@@ -216,6 +217,26 @@ function duration(data) {
   });
 
   return durations;
+}
+
+function workoutTotalWeight(data) {
+  let total = [];
+  console.log(data);
+  data.forEach(workout => {
+    let workoutTotal = 0;
+
+    workout.exercises.forEach(exercise => {
+      if (exercise.type === "resistance") {
+        workoutTotal += exercise.weight;
+        console.log(workoutTotal);
+      }
+
+    });
+
+    total.push(workoutTotal);
+  });
+
+  return total;
 }
 
 function calculateTotalWeight(data) {
