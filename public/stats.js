@@ -37,6 +37,7 @@ function populateChart(data) {
   let workoutDurations = totalDuration(data);
   let durations = duration(data);
   let pounds = calculateTotalWeight(data);
+  let labels = setLabels(data);
   let workouts = workoutNames(data);
   const colors = generatePalette();
 
@@ -48,15 +49,7 @@ function populateChart(data) {
   let lineChart = new Chart(line, {
     type: "line",
     data: {
-      labels: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
+      labels: labels,
       datasets: [
         {
           label: "Workout Duration In Minutes",
@@ -96,15 +89,7 @@ function populateChart(data) {
   let barChart = new Chart(bar, {
     type: "bar",
     data: {
-      labels: [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ],
+      labels: labels,
       datasets: [
         {
           label: "Pounds",
@@ -185,6 +170,30 @@ function populateChart(data) {
       }
     }
   });
+}
+
+function setLabels(data) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+  let labels = [];
+
+  for (let i = 0; i < data.length; i++) {
+    let dayNum = new Date(data[i].day).getDay();
+    let month = new Date(data[i].day).getMonth() + 1;
+    let date = new Date(data[i].day).getDate();
+    console.log(dayNum);
+    labels.push(`${days[dayNum]} ${month}/${date}`);
+  }
+
+  return labels;
 }
 
 function totalDuration(data) {
